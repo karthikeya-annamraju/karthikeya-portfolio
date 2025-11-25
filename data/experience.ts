@@ -16,30 +16,37 @@ export const experienceData: Experience[] = [
     company: "Technical Hub Pvt Ltd",
     duration: "3 months",
     location: "On-site",
-    description: "Collaboratively engineered HiBi, a comprehensive HRMS platform built with Flutter, Express, and MongoDB.",
+    description:
+      "Collaboratively engineered HiBi, a comprehensive HRMS platform built with Flutter, Express, and MongoDB.",
     responsibilities: [
-      "Developed and optimized REST APIs using Node.js and Express for HR workflows",
-      "Built and enhanced Flutter modules for attendance, payroll, and employee dashboards",
-      "Integrated MongoDB for secure and scalable employee data management",
-      "Implemented automation for leave approvals, attendance tracking, and report generation",
-      "Collaborated with cross-functional teams to design self-service portals and performance visibility dashboards"
+      "Developed secure and scalable REST APIs using Node.js and Express",
+      "Built responsive and user-friendly Flutter modules for attendance, payroll, and many employee dashboards",
+      "Integrated MongoDB for reliable and structured employee data management",
+      "Used Jira Scrum board for project management, sprint planning, and task tracking",
     ],
-    technologies: ["Flutter", "Node.js", "Express.js", "MongoDB", "Firebase", "JavaScript", "REST APIs"]
-  }, 
+    technologies: ["Flutter", "Node.js", "Express.js", "MongoDB"],
+  },
   {
     id: 2,
     position: "Gen AI Intern",
     company: "Talentfarm.ai",
     duration: "2 months",
-    location: "On-site",
-    description: "Contributed to production-level applications including HRMS, AI chatbot, and sports management systems.",
+    location: "Hyderabad, India (On-site)",
+    description:
+      "Engineered Learnora, a Generative AI platform that delivered personalized learning paths using NLP-based recommendation systems.",
     responsibilities: [
-      "Developed scalable REST APIs using Express.js and Node.js",
-      "Built cross-platform mobile applications with Flutter",
-      "Integrated Firebase and Firestore for real-time data management",
-      "Collaborated with team on AI-powered RAG chatbot using Hugging Face models",
-      "Implemented responsive UI/UX designs with focus on mobile-first approach"
+      "Developed backend services using Flask for model inference and recommendation logic",
+      "Implemented NLP pipelines and integrated Hugging Face BERT for personalized learning suggestions",
+      "Built responsive frontend interfaces using React for chat, dashboards, and content navigation",
+      "Integrated Firebase Authentication and MySQL for secure user management and preference storage",
+      "Optimized model workflow and API design to improve response relevance and reduce latency",
     ],
-    technologies: ["Flutter", "Express.js", "Firebase", "Node.js", "MongoDB", "Python", "Hugging Face"]
-  }
+    technologies: [
+      "React.js",
+      "Flask",
+      "Firebase Auth",
+      "MySQL",
+      "Hugging Face",
+    ],
+  },
 ];
