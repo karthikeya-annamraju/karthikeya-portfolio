@@ -1,13 +1,31 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
+import Sidebar from "@/components/layout/Sidebar";
+import Background from "@/components/layout/Background";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Karthikeya's Portfolio",
-  description: "Full Stack Developer specializing in Flutter, Express.js, and AI integration. View my projects and experience.",
+  title: "Sai Karthik Annamraju — Full Stack Developer",
+  description:
+    "Premium developer portfolio of Sai Karthik Annamraju — Full Stack Developer specializing in Flutter, Express.js, Spring Boot and AI integration.",
 };
 
 export default function RootLayout({
@@ -16,10 +34,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Navbar />
-        <main>{children}</main>
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans bg-dark-950 text-ink antialiased`}
+      >
+        <Background />
+        <Sidebar />
+        <main className="relative z-10 lg:pl-[260px]">{children}</main>
       </body>
     </html>
   );

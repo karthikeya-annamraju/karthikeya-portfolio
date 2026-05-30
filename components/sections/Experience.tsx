@@ -1,118 +1,151 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FiBriefcase, FiMapPin, FiClock } from "react-icons/fi";
 import { experienceData } from "@/data/experience";
-import { FadeInUp } from "@/components/animations/AnimationWrappers";
-import { FiBriefcase, FiMapPin, FiCalendar } from "react-icons/fi";
+import { educationData } from "@/data/education";
+import { SectionLabel, StackBadge, Reveal } from "@/components/ui/Primitives";
 
 const Experience = () => {
   return (
     <section id="experience" className="section-container">
-      <FadeInUp>
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-4">
-            Work Experience
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Professional journey and contributions
-          </p>
-        </div>
-      </FadeInUp>
+      <SectionLabel index="05" title="Experience" />
 
-      <div className="max-w-4xl mx-auto">
+      <Reveal>
+        <h2 className="flex items-center gap-3 font-display text-3xl font-bold sm:text-4xl">
+          <FiBriefcase className="text-accent-purple" /> Experience Timeline
+        </h2>
+        <p className="mt-2 text-ink-muted">
+          My professional journey building real products.
+        </p>
+      </Reveal>
+
+      <div className="mt-12 grid gap-8 lg:grid-cols-3">
         {/* Timeline */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sunset-orange via-sunset-coral to-primary-400" />
+        <div className="lg:col-span-2">
+          <div className="relative ml-3 border-l border-white/[0.1] pl-8">
+            {experienceData.map((exp, i) => (
+              <Reveal key={exp.id} delay={i * 0.1}>
+                <div className="relative mb-10 last:mb-0">
+                  {/* Node */}
+                  <span className="absolute -left-[41px] top-1.5 flex h-4 w-4 items-center justify-center">
+                    <span className="absolute h-4 w-4 animate-ping rounded-full bg-accent-purple/40" />
+                    <span className="h-3 w-3 rounded-full bg-gradient-to-br from-accent-purple to-accent-blue ring-4 ring-dark-950" />
+                  </span>
 
-          {experienceData.map((exp, idx) => (
-            <ExperienceCard key={exp.id} experience={exp} index={idx} />
-          ))}
+                  <div className="rounded-2xl glass p-6 hover:border-accent-purple/40 hover:shadow-glow transition-all">
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <div>
+                        <h3 className="font-display text-lg font-semibold text-ink">
+                          {exp.position}
+                        </h3>
+                        <p className="font-mono text-sm text-accent-purple">
+                          {exp.company}
+                        </p>
+                      </div>
+                      {i === 0 && (
+                        <span className="rounded-full border border-accent-purple/30 bg-accent-purple/10 px-3 py-1 text-[11px] font-medium text-violet-300">
+                          Latest
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="mt-2 flex flex-wrap gap-4 font-mono text-[11px] text-ink-faint">
+                      <span className="inline-flex items-center gap-1">
+                        <FiClock /> {exp.duration}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <FiMapPin /> {exp.location}
+                      </span>
+                    </div>
+
+                    <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                      {exp.description}
+                    </p>
+
+                    <ul className="mt-3 space-y-1.5">
+                      {exp.responsibilities.map((r) => (
+                        <li
+                          key={r}
+                          className="flex gap-2 text-sm text-ink-muted"
+                        >
+                          <span className="mt-1 text-accent-blue">▹</span>
+                          <span>{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {exp.technologies.map((t) => (
+                        <StackBadge key={t} label={t} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* career.log terminal + education */}
+        <div className="space-y-6">
+          <Reveal delay={0.15}>
+            <div className="overflow-hidden rounded-xl border border-white/[0.08] bg-dark-900/80 shadow-card">
+              <div className="flex items-center gap-2 border-b border-white/[0.06] bg-white/[0.02] px-4 py-2.5">
+                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+                <span className="ml-3 font-mono text-[11px] text-ink-faint">
+                  career.log
+                </span>
+              </div>
+              <div className="space-y-1 p-5 font-mono text-[12px]">
+                <p className="text-ink-muted">
+                  <span className="text-green-400">&gt;</span> cat career.log
+                </p>
+                <p className="text-ink">
+                  <span className="text-accent-blue">2025</span> → Full Stack
+                  Developer
+                </p>
+                <p className="text-ink">
+                  <span className="text-accent-blue">2024</span> → Gen AI Intern
+                </p>
+                <p className="text-ink">
+                  <span className="text-accent-blue">2024</span> → Full Stack
+                  Intern
+                </p>
+                <p className="mt-2 text-ink-faint">
+                  # On to the next build 🚀
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Education */}
+          <Reveal delay={0.25}>
+            <div className="rounded-2xl glass p-5">
+              <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-accent-purple">
+                Education
+              </h3>
+              <div className="space-y-4">
+                {educationData.map((edu) => (
+                  <div
+                    key={edu.id}
+                    className="border-l-2 border-white/[0.08] pl-3"
+                  >
+                    <p className="text-sm font-medium text-ink">{edu.degree}</p>
+                    <p className="text-xs text-ink-muted">{edu.institution}</p>
+                    <p className="font-mono text-[11px] text-ink-faint">
+                      {edu.duration}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
-  );
-};
-
-// Individual Experience Card with Timeline
-const ExperienceCard = ({ experience, index }: { experience: any; index: number }) => {
-  const isEven = index % 2 === 0;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-      className={`relative mb-12 ${isEven ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'} w-full md:w-[calc(50%-2rem)]`}
-    >
-      {/* Timeline Dot */}
-      <motion.div
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.2 + 0.3 }}
-        className="absolute left-8 md:left-auto md:right-[-2.5rem] md:ml-[-0.5rem] w-6 h-6 bg-gradient-to-br from-sunset-orange to-sunset-coral rounded-full border-4 border-white shadow-lg z-10"
-        style={isEven ? {} : { left: 'auto', right: 'auto', transform: 'translateX(-50%)' }}
-      />
-
-      {/* Content Card */}
-      <motion.div
-        whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(255, 107, 53, 0.2)" }}
-        className="ml-20 md:ml-0 bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
-      >
-        {/* Header */}
-        <div className="mb-4">
-          <div className="flex items-start justify-between mb-2">
-            <h3 className="text-2xl font-bold text-gray-800">{experience.position}</h3>
-            <FiBriefcase className="text-sunset-orange text-2xl" />
-          </div>
-          <p className="text-sunset-orange font-semibold text-lg mb-2">{experience.company}</p>
-          
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-            <span className="flex items-center gap-1">
-              <FiCalendar className="text-sunset-coral" />
-              {experience.duration}
-            </span>
-            <span className="flex items-center gap-1">
-              <FiMapPin className="text-sunset-coral" />
-              {experience.location}
-            </span>
-          </div>
-        </div>
-
-        {/* Description */}
-        <p className="text-gray-700 mb-4">{experience.description}</p>
-
-        {/* Responsibilities */}
-        <div className="mb-4">
-          <h4 className="font-semibold text-gray-800 mb-2">Key Responsibilities:</h4>
-          <ul className="space-y-2">
-            {experience.responsibilities.map((resp: string, idx: number) => (
-              <li key={idx} className="text-gray-600 flex items-start gap-2 text-sm">
-                <span className="text-sunset-orange mt-1 font-bold">→</span>
-                <span>{resp}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Technologies */}
-        <div>
-          <h4 className="font-semibold text-gray-800 mb-2">Technologies Used:</h4>
-          <div className="flex flex-wrap gap-2">
-            {experience.technologies.map((tech: string) => (
-              <span
-                key={tech}
-                className="px-3 py-1 bg-primary-100 text-sunset-orange text-sm rounded-full"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
   );
 };
 

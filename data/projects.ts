@@ -20,7 +20,7 @@ export const projectsData: Project[] = [
     techStack: ["Flutter", "Express.js", "MongoDB"],
     isPrivate: true,
     organizationName: "Technical Hub",
-    image: "/images/projects/hibi.jpg",
+    image: "/images/projects/Hibi.jpg",
     highlights: [
       "Built scalable backend API with Express.js",
       "Implemented automated HR workflows including attendance, payroll, and leave approvals",

@@ -1,124 +1,141 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
-  FadeInUp,
-  FadeInLeft,
-  FadeInRight,
-} from "@/components/animations/AnimationWrappers";
-import { FiCode, FiDatabase, FiSmartphone, FiCpu } from "react-icons/fi";
+  FiCode,
+  FiCpu,
+  FiTarget,
+  FiLayers,
+  FiUser,
+} from "react-icons/fi";
+import { SectionLabel, Reveal } from "@/components/ui/Primitives";
+
+const doItems = [
+  {
+    icon: FiLayers,
+    title: "Full Stack Development",
+    description: "Building end-to-end scalable web and mobile applications.",
+  },
+  {
+    icon: FiCpu,
+    title: "AI & Automation",
+    description:
+      "Integrating LLMs, RAG systems and automation to save time and effort.",
+  },
+  {
+    icon: FiTarget,
+    title: "Problem Solving",
+    description: "Turning complex requirements into clean, efficient solutions.",
+  },
+  {
+    icon: FiCode,
+    title: "Clean Code",
+    description: "Writing maintainable, well-engineered and tested code.",
+  },
+];
+
+const facts = [
+  { k: "Name", v: "Sai Karthik Annamraju" },
+  { k: "Location", v: "India" },
+  { k: "Email", v: "avkarthikeya.dev@gmail.com" },
+  { k: "Availability", v: "Open to opportunities" },
+];
 
 const About = () => {
-  const highlights = [
-    {
-      icon: <FiSmartphone className="text-3xl" />,
-      title: "Mobile Development",
-      description:
-        "Building cross-platform apps with Flutter and seamless UI/UX",
-    },
-    {
-      icon: <FiDatabase className="text-3xl" />,
-      title: "Backend Engineering",
-      description:
-        "Scalable APIs with Express.js, Node.js, and database management",
-    },
-    {
-      icon: <FiCpu className="text-3xl" />,
-      title: "AI Integration",
-      description:
-        "Implementing LLMs and RAG systems for intelligent applications",
-    },
-    {
-      icon: <FiCode className="text-3xl" />,
-      title: "Full-Stack Projects",
-      description:
-        "End-to-end development from concept to production deployment",
-    },
-  ];
-
   return (
-    <section id="about" className="section-container bg-white/50">
-      <FadeInUp>
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-4">
-            About Me
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Passionate developer crafting production-ready solutions
-          </p>
-        </div>
-      </FadeInUp>
+    <section id="about" className="section-container">
+      <SectionLabel index="03" title="About" />
 
-      <div className="max-w-4xl mx-auto space-y-12">
-        {/* Introduction */}
-        <FadeInUp delay={0.2}>
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-            <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              {/* I'm a Computer Science student and a Full Stack Developer with a passion for 
-              building scalable, user-centric applications. With hands-on experience in 
-              production-level projects during my internships, I've developed 
-              expertise in modern web and mobile technologies. */}
-              I'm a Full Stack Developer specializing in building reliable
-              backend systems and clean, scalable user interfaces. I work across
-              Node.js, Express, Spring Boot, Flutter, and React and I’ve
-              delivered production-level features during my internships that are
-              actively used by real users.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed">
-              {/* My journey spans from creating intuitive Flutter mobile apps to architecting 
-              robust Express.js backends, with a growing focus on integrating AI capabilities 
-              into real-world applications. I thrive on solving complex problems and 
-              continuously learning emerging technologies. */}
-               I enjoy turning complex requirements
-              into simple, well-engineered solutions and constantly explore how
-              AI and cloud technologies can enhance real-world applications.
-            </p>
+      <Reveal>
+        <h2 className="flex items-center gap-3 font-display text-3xl font-bold sm:text-4xl">
+          <FiUser className="text-accent-purple" /> About Me
+        </h2>
+      </Reveal>
+
+      <div className="mt-10 grid gap-6 lg:grid-cols-5">
+        {/* Profile card */}
+        <Reveal className="lg:col-span-2">
+          <div className="rounded-2xl glass p-5">
+            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-xl border border-white/[0.08]">
+              <div className="absolute inset-0 bg-gradient-to-tr from-accent-purple/30 to-accent-blue/20 mix-blend-overlay" />
+              <Image
+                src="/images/Karthikeya Annamraju.jpg"
+                alt="Sai Karthik Annamraju"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover object-[15%_30%]"
+                priority
+              />
+            </div>
+
+            <div className="mt-5 space-y-2 font-mono text-[13px]">
+              {facts.map((f) => (
+                <div key={f.k} className="flex justify-between gap-3">
+                  <span className="text-ink-faint">{f.k}</span>
+                  <span className="truncate text-ink">{f.v}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 rounded-lg border border-white/[0.06] bg-dark-900/60 px-4 py-3 font-mono text-[12px] text-ink-muted">
+              <span className="text-green-400">&gt;</span> echo &quot;Building the
+              future, one line at a time.&quot;
+            </div>
           </div>
-        </FadeInUp>
+        </Reveal>
 
-        {/* Highlight Cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {highlights.map((item, idx) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              whileHover={{
-                y: -5,
-                boxShadow: "0 10px 30px rgba(255, 107, 53, 0.15)",
-              }}
-              className="bg-gradient-to-br from-white to-primary-50 rounded-xl p-6 border border-primary-100 shadow-md"
-            >
-              <div className="text-sunset-orange mb-4">{item.icon}</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                {item.title}
-              </h3>
-              <p className="text-gray-600">{item.description}</p>
-            </motion.div>
-          ))}
+        {/* Bio + What I do */}
+        <div className="space-y-6 lg:col-span-3">
+          <Reveal delay={0.1}>
+            <div className="rounded-2xl glass p-6">
+              <p className="leading-relaxed text-ink-muted">
+                I&apos;m a Full Stack Developer specializing in building reliable
+                backend systems and clean, scalable user interfaces. I work
+                across{" "}
+                <span className="text-ink">
+                  Node.js, Express, Spring Boot, Flutter and React
+                </span>
+                , and I&apos;ve delivered production-level features during my
+                internships that are actively used by real users.
+              </p>
+              <p className="mt-4 leading-relaxed text-ink-muted">
+                I enjoy turning complex requirements into simple, well-engineered
+                solutions and constantly explore how AI and cloud technologies
+                can enhance real-world applications.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {doItems.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.title}
+                    whileHover={{ y: -4 }}
+                    transition={{ delay: i * 0.04 }}
+                    className="rounded-xl glass p-5 hover:border-accent-purple/40 hover:shadow-glow transition-all"
+                  >
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent-purple/10 text-accent-purple">
+                      <Icon className="text-lg" />
+                    </div>
+                    <h3 className="font-display font-semibold text-ink">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-ink-muted">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </Reveal>
         </div>
-
-        {/* Stats Section */}
-        <FadeInUp delay={0.4}>
-          <div className="grid grid-cols-3 gap-6 bg-gradient-to-r from-sunset-orange to-sunset-coral rounded-2xl p-8 text-white shadow-xl">
-            <StatCard number="5+" label="Months Experience" />
-            <StatCard number="6+" label="Projects Built" />
-            <StatCard number="10+" label="Technologies" />
-          </div>
-        </FadeInUp>
       </div>
     </section>
   );
 };
-
-// Stats Card Component
-const StatCard = ({ number, label }: { number: string; label: string }) => (
-  <motion.div whileHover={{ scale: 1.05 }} className="text-center">
-    <div className="text-3xl md:text-4xl font-bold mb-2">{number}</div>
-    <div className="text-sm md:text-base opacity-90">{label}</div>
-  </motion.div>
-);
 
 export default About;
