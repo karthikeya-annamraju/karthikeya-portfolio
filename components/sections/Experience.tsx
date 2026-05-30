@@ -104,18 +104,19 @@ const Experience = () => {
                   <span className="text-green-400">&gt;</span> cat career.log
                 </p>
                 <p className="text-ink">
+                  <span className="text-accent-blue">2025</span> → SWE Intern @
+                  PASS Consulting
+                </p>
+                <p className="text-ink">
                   <span className="text-accent-blue">2025</span> → Full Stack
-                  Developer
+                  Mobile @ Technical Hub
                 </p>
                 <p className="text-ink">
-                  <span className="text-accent-blue">2024</span> → Gen AI Intern
-                </p>
-                <p className="text-ink">
-                  <span className="text-accent-blue">2024</span> → Full Stack
-                  Intern
+                  <span className="text-accent-blue">2025</span> → Gen AI Intern
+                  @ Talentfarm
                 </p>
                 <p className="mt-2 text-ink-faint">
-                  # On to the next build 🚀
+                  # Currently building @ PASS 🚀
                 </p>
               </div>
             </div>
